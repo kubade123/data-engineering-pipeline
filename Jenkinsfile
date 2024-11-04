@@ -11,7 +11,7 @@ pipeline {
             steps {
                 // Install Python dependencies
                 script {
-                    docker.image('python:3.8').inside {
+                    docker.image('python:3.12.24').inside {
                         sh 'pip install -r scripts/requirements.txt'
                     }
                 }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 // Run unit tests
                 script {
-                    docker.image('python:3.8').inside {
+                    docker.image('python:3.12.24').inside {
                         sh 'python -m unittest discover -s scripts'
                     }
                 }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 // Run the ETL process
                 script {
-                    docker.image('python:3.8').inside {
+                    docker.image('python:3.12.24').inside {
                         sh 'python scripts/etl.py'
                     }
                 }
